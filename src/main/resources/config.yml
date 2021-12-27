@@ -5,7 +5,7 @@ shopBlock: 'minecraft:barrel'
 
 # The block you want to open the stock GUI
 # Stock GUI will be activated only by left clicking
-stockBlock: 'minecraft:composter'
+stockBlock: 'minecraft:end_portal_frame'
 
 # Allows the use of shop blocks. Setting to false will disable players using specified shop block to open shop GUI
 # WARNING: Setting to false will allow breaking of existing shop blocks without deleting shop!
@@ -28,11 +28,10 @@ stockBlockList:
   - minecraft:jukebox
 
 # Disable trading of listed items below if true
-disabledItems: false
+disabledItems: true
 disabledItemsList:
   - TNT
-  - GUNPOWDER
-  - WITHER_SKELETON_SKULL
+  - BEDROCK
 
 # Disable creating shops in worlds listed below if true
 disableShopInWorld: false
@@ -41,20 +40,20 @@ disabledWorldList:
   - world_the_end
 
 # This enables admin shops that don't need stock. Created by typing /shop adminshop, requires ishop.admin permission
-enableAdminShop: true
+enableAdminShop: false
 
 # Set player head for admin shops when listing using UUID. Default is 00000000-0000-0000-0000-000000000000
 adminPlayerHeadShops: 00000000-0000-0000-0000-000000000000
 
 # Enable clickable chest item in self owned shop gui that will access stock
-enableStockAccessFromShopGUI: true
+enableStockAccessFromShopGUI: false
 
 # Allows players to access the stock GUI by typing /shop stock
 # Players with ishop.stock permission will bypass if disabled
-enableStockCommand: true
+enableStockCommand: false
 
 # Number of pages to have in the stock GUI
-stockPages: 5
+stockPages: 2
 
 # Enable sending of messages when players have purchased or sold item(s) from shops
 enableShopNotifications: true
@@ -81,10 +80,10 @@ autoClearSoldListOnLast: false
 enableOutOfStockMessages: true
 
 # Time in seconds before shop owner receives another message about being out of stock when someone tries to buy item(s)
-noStockCooldown: 300
+noStockCooldown: 600
 
 # Require player to own at least 1 shop to access stock
-mustOwnShopForStock: true
+mustOwnShopForStock: false
 
 # Amount of money needed to create a shop
 # Set to 0 to disable
@@ -96,7 +95,7 @@ returnAmount: 0.0
 
 # Amount of days a player is inactive before deleting their shops
 # Set to 0 to disable
-maxInactiveDays: 0
+maxInactiveDays: 14
 
 # List of player UUID's that will be exempt from shops expiring if maxInactiveDays is set above 0
 exemptExpiringShops:
@@ -107,10 +106,6 @@ deleteBlock: false
 
 # Show particle effects on active shop blocks
 showParticles: true
-
-# Required to set the ishop flag in the regions for it to work
-# Only works if WorldGuard is installed
-enableWorldGuardFlag: false
 
 # Set whether you want to use permission nodes or not
 # Setting to false will allow any player to create a shop up to defaultShopLimit
@@ -123,10 +118,10 @@ usePermissions: false
 defaultShopLimit: 5
 
 # Allow everyone to remotely manage their own player shops using "/shop manage <id>" command
-remoteManage: true
+remoteManage: false
 
 # Allow everyone to use "/shop view <id>" command to view other players shop remotely
-remoteShopping: true
+remoteShopping: false
 
 # Allow everyone to use "/shop list <player>" command to view full list of given players shops with location
 publicListCommand: false
@@ -135,10 +130,10 @@ publicListCommand: false
 publicShopListCommand: true
 
 # This will show admin shops when using "/shop shops" -- Requires server restart if config option changed!
-adminShopPublic: true
+adminShopPublic: false
 
 # Setting this to false will hide shops that player owns when using command "/shop shops"
-publicShopListShowsOwned: true
+publicShopListShowsOwned: false
 
 # Allow shop owners and admins to place item frames and signs on shop blocks when sneaking
 placeItemFrameSigns: true
@@ -158,73 +153,73 @@ stockRangeLimitFromShop: 0
 stockRangeLimitUsingCommand: false
 
 # Customizable Messages
-adminShop: "Admin Shop #%id"
-adminShopDisabled: "&cAdmin shops have been disabled!"
-broadcastOff: "Broadcast OFF"
-broadcastOn: "Broadcast ON"
-buy: "&7You bought&a %in &7for&c %out&7!"
-buyAction: "BUY"
-buyTitle: "PRICE TO BUY ITEMS [SLOT 1]"
-buyTitle2: "PRICE TO BUY ITEMS [SLOT 2]"
-createShopTitle: "Create shop trades!"
-createTitle: "CREATE"
-deleteTitle: "DELETE"
-disabledShopBlock: "&cCannot create shop location when shop blocks are disabled!"
-existingShop: "&cCannot create shop where existing shop is already located!"
-foundShops: "&6Found&a %shops &6shop(s) for player:&a %p"
-location: "&6Shop&a %id &6location XYZ: "
-noItems: "&cYou do not have enough item(s) to buy from this shop!"
-noMoney: "&cYou do not have enough money to create a shop! You need at least &o$"
-noPermissions: "&cYou do not have permission for this command!"
-noPlayerFound: "&cPlayer cannot be found!"
-noPlayerShop: "&cPlayer name does not exist! Cannot list player shop!"
-noRemoteManage: "&cRemote management of shops has been disabled!"
-noRemoteShops: "&cRemote shopping has been disabled!"
-normalShop: "%player%'s Shop #%id"
-noShopFound: "&cNo shop can be found!"
-noShopStock: "&cCannot access stock because you do not have any shops!"
-noStock: "&cThis shop is currently out of stock of that item(s)!"
-noStockNotify: "&cOne of your shops is currently out of stock! &o(%s)"
-page: "Page"
-playerInventoryFull: "&cYour inventory is FULL! Cannot buy any items!"
-playerShopCreated: "&7Shop has been &aCREATED&7 for&a %p &7!"
-reload: "&7Configuration file reloaded."
-sell: "&7%p has bought&7&c %in &7for&a %out&7!"
-sellTitle: "ITEMS FOR SALE [SLOT 1]"
-sellTitle2: "ITEMS FOR SALE [SLOT 2]"
-shopBusy: "&6Shop is currently busy, try again soon!"
-shopCreated: "&7Targeted shop has been &aCREATED&7!"
-shopDeleted: "&7Targeted shop has been &cDELETED&7!"
-shopIDDeleted: "&cShop id&a %id &chas been DELETED!"
-shopIntegerError: "&cShop id must be an integer greater than 0!"
-shopLimit: "&cYou do not have permission or have reached your shop limit!"
-shopNotOwned: "&cYou do not own this shop!"
-stockCommandDisabled: "&cThe /shop stock command has been disabled!"
-stockTitle: "Shop Stock Inventory"
-targetMismatch: "&cTargeted block must match set shop block!"
-clickManage: "&eMANAGE"
-clickShop: "&eSHOP"
-listAdminShop: "&6Listing all found admin shops:"
-noAdminShopsFound: "&cNo admin shops have been found!"
-noShopBlock: "&cshopBlock cannot be empty! Reverting to default minecraft:barrel"
-noStockBlock: "&cstockBlock cannot be empty! Reverting to default minecraft:composter"
-notPlayer: "&cOnly players in the game can use shop commands!"
-shopListTitle: "Shops List"
-shopNumber: "%player shop #%id"
-shopListDisabled: "&cShops list has been disabled!"
-adminShopNumber: "Admin shop #%id"
-noStockButton: "&cItem(s) out of stock!"
-stockIntegerError: "&cStock page must be an integer greater than 0!"
-soldClear: "&6Sold shop items list has been&c cleared"
-soldCommandDisabled: "&cShop sold command has been disabled"
-soldHeader: "&6Sold items while offline or last server restart (Page %p):"
-soldIntegerError: "&cSold page must be an integer greater than 0!"
-soldJoinNotify: "&6Type &a/shop sold&6 to see sold items or use &a/shop sold clear"
-soldNothing: "&cNo shop trades found while offline or since server restart"
-soldPages: "&7Page %p"
-soldPagesNext: " &7>> &6Next"
-soldPagesPrevious: "&6Previous &7<< "
-disabledWorld: "&cCreating shops in the world you are in has been disabled!"
+adminShop: "Магическая торговая ячейка #%id"
+adminShopDisabled: "&cМагические торговые ячейки отключены!"
+broadcastOff: "⚖ Уведомления выключены"
+broadcastOn: "⚖ Уведомления включены"
+buy: "&f⚖ Куплено&8 %in &fза&8 %out&f."
+buyAction: "КУПИТЬ"
+buyTitle: "Продаем за"
+buyTitle2: "Продаем за"
+createShopTitle: "Создание торговой ячейки"
+deleteTitle: "&cУДАЛИТЬ"
+createTitle: "&aСОЗДАТЬ"
+disabledShopBlock: "⚖ Невозможно создать местоположение магазина, если блоки торговой ячейки отключены!"
+existingShop: "⚖ Невозможно создать торговую ячейку там, где уже находится торговая ячейка!"
+foundShops: "⚖ Найдено&a %shops &6торговых точек у игрока:&a %p"
+location: "⚖ Торговая ячейка&a %id находится XYZ: "
+noItems: "&f⚖ Недостаточно ресурсов для торговли."
+noMoney: "&f⚖ У тебя нет достаточно денег, чтобы создать торговую ячейку. Нужно хотя бы &o$"
+noPermissions: "&fНеизвестная команда О_о"
+noPlayerFound: "⚖ Игрок не найден!"
+noPlayerShop: "⚖ Имя игрока не существует! Что ты от меня хочешь?!"
+noRemoteManage: "⚖ Удаленное управление отключено!"
+noRemoteShops: "⚖ Удаленное управление отключено!"
+normalShop: "Торговая ячейка %player% #%id"
+noShopFound: "⚖ Торговых ячеек не найдено!"
+noShopStock: "⚖ Склад недоступен, так как вы ничего не продаете."
+noStock: "⚖ Товар отсутствует на складе."
+noStockNotify: "⚖ В твоей торговой ячейке закончился товар: (%s)"
+page: "Страница"
+playerInventoryFull: "⚖ Ваш инвентарь полон. Покупка отменена."
+playerShopCreated: "⚖ Создали торговую ячейку %p"
+reload: "&f⚖ Перезагрузили конфигурацию и надеемся, что ничего не сломали."
+sell: "&f⚖ %p продано &8 %in &f за&8 %out&f."
+sellTitle: "Продаем"
+sellTitle2: "Продаем"
+shopBusy: "⚖ Торговая ячейка в настоящее время занята, попробуй еще раз в ближайшее время!"
+shopCreated: "⚖ Торговая ячейка была создана!"
+shopDeleted: "⚖ Торговая ячейка была удалена!"
+shopIDDeleted: "⚖ Торговая ячейка %id была удалена!"
+shopIntegerError: "⚖ Номер торговой ячейки должен быть целым числом больше 0!"
+shopLimit: "&f⚖ Наши юристы сказали, что создавать так много торговых ячеек нельзя."
+shopNotOwned: "&f⚖ Это не твоя торговую точку и редактировать ее нельзя :("
+stockCommandDisabled: "⚖ Команда /shop stock отключена!"
+stockTitle: "Склад торговой ячейки"
+targetMismatch: "⚖ Сначала установи бочку, после чего напиши эту команду."
+clickManage: "&eУправление"
+clickShop: "&eТорговая ячейка"
+listAdminShop: "⚖ Все магические торговые ячейки:"
+noAdminShopsFound: "⚖ Не найдено магических торговых ячеек!"
+noShopBlock: "&cERROR GoodTrade: shopBlock cannot be empty! Reverting to default"
+noStockBlock: "&cERROR GoodTrade: stockBlock cannot be empty! Reverting to default"
+notPlayer: "⚖ Только игроки могут использовать этму команду..."
+shopListTitle: "Список торговых ячеек"
+shopNumber: "Торговая ячейка %player #%id"
+shopListDisabled: "⚖ Список торговых ячеек отключен!"
+adminShopNumber: "Магическая торговая ячейка #%id"
+noStockButton: "Товар отсутствует на складе"
+stockIntegerError: "&cERROR GoodTrade: Stock page must be an integer greater than 0!"
+soldClear: "⚖ Список проданных товаров магазина был очищен"
+soldCommandDisabled: "⚖ Команда /shop sold отключена!"
+soldHeader: "⚖ Пока тебя не было, мы продали товары (Страница %p):"
+soldIntegerError: "&cERROR GoodTrade: Sold page must be an integer greater than 0!"
+soldJoinNotify: "&fВведи &a/shop sold&f для просмотра проданных товаров или &a/shop sold clear &fдля очистки."
+soldNothing: "⚖ Мы ничего не продали, пока тебя не было."
+soldPages: "&7Страница %p"
+soldPagesNext: " &7>> &6Дальше"
+soldPagesPrevious: "&6Назад &7<< "
+disabledWorld: "⚖ Этот мир опасен и никто не посещает его. Мне не нужна здесь торговая ячейка..."
 listOutOfStock: "&6Listing shops out of stock:"
 notOutOfStock: "&aNo shops found that are out of stock!"
 outOfStock: "&6Shop&a #%shop Row %row &6is out of stock"

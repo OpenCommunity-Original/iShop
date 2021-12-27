@@ -31,3 +31,5 @@ hs_err_pid*
 iShop.iml
 /pom.xml
 /target/
+.gradle
+/build/

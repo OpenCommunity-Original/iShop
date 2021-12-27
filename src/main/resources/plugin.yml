@@ -1,8 +1,7 @@
 name: iShop
 main: com.minedhype.ishop.iShop
-description: Item trading shops with unique GUI!
-author: Beez0r
-website: https://minedhype.com
+description: Item trading shops
+author: Beez0r, Envel
 version: "${project.version}"
 api-version: "1.17"
 softdepend: [Vault, WorldGuard]

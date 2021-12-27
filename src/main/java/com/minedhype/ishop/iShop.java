@@ -19,25 +19,16 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import com.minedhype.ishop.gui.GUIEvent;
-import com.minedhype.ishop.MetricsLite;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.scheduler.BukkitTask;
 
 public class iShop extends JavaPlugin {
 	File configFile;
 	public static FileConfiguration config;
-	public static WorldGuardLoader wgLoader = null;
 	private static BukkitTask expiredTask, saveTask, tickTask;
 	private static Connection connection = null;
 	private static Economy economy = null;
 	private static String chainConnect;
-
-	@Override
-	public void onLoad() {
-		Plugin wgCheck = Bukkit.getPluginManager().getPlugin("WorldGuard");
-		if(wgCheck != null)
-			wgLoader = new WorldGuardLoader();
-	}
 
 	@Override
 	public void onEnable() {
@@ -74,11 +65,6 @@ public class iShop extends JavaPlugin {
 		saveTask = Bukkit.getScheduler().runTaskTimerAsynchronously(this, Shop::saveData, delayTime+1200, 6000);
 		tickTask = Bukkit.getScheduler().runTaskTimerAsynchronously(this, Shop::tickShops, delayTime+150, 50);
 		Bukkit.getScheduler().runTaskLaterAsynchronously(this, Shop::getPlayersShopList, delayTime+100);
-		MetricsLite metrics = new MetricsLite(this, 9189);
-		new UpdateChecker(this, 84555).getVersion(version -> {
-			if(!this.getDescription().getVersion().equalsIgnoreCase(version))
-				getServer().getConsoleSender().sendMessage(ChatColor.RED + "[iShop] There is a new update available! - https://www.spigotmc.org/resources/ishop.84555/");
-		});
 	}
 
 	@Override

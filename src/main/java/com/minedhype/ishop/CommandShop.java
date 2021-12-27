@@ -210,10 +210,7 @@ public class CommandShop implements CommandExecutor {
 			}
 		}
 		boolean isShopLoc;
-		if(iShop.wgLoader != null)
-			isShopLoc = iShop.wgLoader.checkRegion(block);
-		else
-			isShopLoc = true;
+		isShopLoc = true;
 		if(!isShopLoc) {
 			player.sendMessage(Messages.WG_REGION.toString());
 			return;
