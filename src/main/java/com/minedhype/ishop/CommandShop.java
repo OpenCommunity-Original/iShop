@@ -341,7 +341,7 @@ public class CommandShop implements CommandExecutor {
 						}
 					if(!foundPlayer) {
 						player.sendMessage(Messages.NO_PLAYER_FOUND.toString());
-						Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[iShop] " + Messages.NO_PLAYER_FOUND);
+						Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[GoodTrade] " + Messages.NO_PLAYER_FOUND);
 						return;
 					}
 					shopOwner = foundPlayerUUID;
@@ -513,7 +513,7 @@ public class CommandShop implements CommandExecutor {
 				sOwner = getUUID(playerName);
 			} catch (Exception e) {
 				player.sendMessage(Messages.NO_PLAYER_SHOP.toString());
-				Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[iShop] " + Messages.NO_PLAYER_SHOP);
+				Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[GoodTrade] " + Messages.NO_PLAYER_SHOP);
 				return;
 			}
 		}
@@ -581,9 +581,9 @@ public class CommandShop implements CommandExecutor {
 		if(plugin != null)
 			plugin.createConfig();
 		if(player != null)
-			player.sendMessage(ChatColor.GREEN + "[iShop] " + Messages.SHOP_RELOAD);
+			player.sendMessage(ChatColor.GREEN + "[GoodTrade] " + Messages.SHOP_RELOAD);
 		else
-			Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "[iShop] " + Messages.SHOP_RELOAD);
+			Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "[GoodTrade] " + Messages.SHOP_RELOAD);
 		Bukkit.getScheduler().runTaskAsynchronously(iShop.getPlugin(), () -> {
 			EventShop.adminShopEnabled = iShop.config.getBoolean("enableAdminShop");
 			EventShop.noShopNoStock = iShop.config.getBoolean("mustOwnShopForStock");
@@ -720,7 +720,7 @@ public class CommandShop implements CommandExecutor {
 				sOwner = getUUID(stockOwner);
 			} catch (Exception e) {
 				player.sendMessage(Messages.NO_PLAYER_FOUND.toString());
-				Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[iShop] " + Messages.NO_PLAYER_FOUND);
+				Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[GoodTrade] " + Messages.NO_PLAYER_FOUND);
 				return;
 			}
 		}
@@ -865,7 +865,7 @@ public class CommandShop implements CommandExecutor {
 				sOwner = getUUID(playerName);
 			} catch (Exception e) {
 				player.sendMessage(Messages.NO_PLAYER_FOUND.toString());
-				Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[iShop] " + Messages.NO_PLAYER_FOUND);
+				Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[GoodTrade] " + Messages.NO_PLAYER_FOUND);
 				return;
 			}
 		}

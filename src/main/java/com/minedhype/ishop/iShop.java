@@ -37,15 +37,15 @@ public class iShop extends JavaPlugin {
 		this.createConfig();
 		if(config.getString("shopBlock") == null) {
 			config.set("shopBlock", "minecraft:barrel");
-			Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[iShop] " + Messages.NO_SHOP_BLOCK);
+			Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[GoodTrade] " + Messages.NO_SHOP_BLOCK);
 		}
 		if(config.getString("stockBlock") == null) {
 			config.set("stockBlock", "minecraft:composter");
-			Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[iShop] " + Messages.NO_STOCK_BLOCK);
+			Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[GoodTrade] " + Messages.NO_STOCK_BLOCK);
 		}
 		getServer().getPluginManager().registerEvents(new EventShop(), this);
 		getServer().getPluginManager().registerEvents(new GUIEvent(), this);
-		getCommand("ishop").setExecutor(new CommandShop());
+		getCommand("goodtrade").setExecutor(new CommandShop());
 		int delayTime;
 		try {
 			delayTime = config.getInt("shopsDatabaseLoadDelay");

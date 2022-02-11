@@ -1,11 +1,11 @@
-name: iShop
+name: GoodTrade
 main: com.minedhype.ishop.iShop
 description: Item trading shops
 author: Beez0r, Envel
 version: "${project.version}"
-api-version: "1.17"
+api-version: "1.18"
 softdepend: [Vault, WorldGuard]
 commands:
-  ishop:
+  goodtrade:
     description: "/shop"
     aliases: [shop]

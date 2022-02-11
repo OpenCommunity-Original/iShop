@@ -71,6 +71,7 @@ public class Shop {
 			Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
 				PreparedStatement stmt = null;
 				try {
+					Class.forName("org.sqlite.JDBC");
 					stmt = iShop.getConnection().prepareStatement("INSERT INTO zooMercaTiendas (location, owner, admin) VALUES (?,?,?);", Statement.RETURN_GENERATED_KEYS);
 					String locationRaw = loc.getBlockX()+";"+loc.getBlockY()+";"+loc.getBlockZ()+";"+ loc.getWorld().getName();
 					stmt.setString(1, locationRaw);
@@ -502,7 +503,7 @@ public class Shop {
 
 		} catch(Exception e) {
 			e.printStackTrace();
-			Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[iShop] Failed to load database properly! Shutting down to prevent data corruption.");
+			Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[GoodTrade] Failed to load database properly! Shutting down to prevent data corruption.");
 			Bukkit.shutdown();
 		} finally {
 			try {
