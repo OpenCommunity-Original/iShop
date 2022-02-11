@@ -45,12 +45,6 @@ public class InvStock extends GUI {
 		if(event.getRawSlot() >= 45 && event.getRawSlot() < 54)
 			return;
 		if(event.getRawSlot() >= 54 && !player.hasPermission(Permission.SHOP_ADMIN.toString())) {
-			if(InvCreateRow.strictStock) {
-				ItemStack item = event.getCurrentItem();
-				ItemStack item2 = event.getCursor();
-				if(Shop.strictStockShopCheck(item, owner) || Shop.strictStockShopCheck(item2, owner))
-					return;
-			}
 			if(InvCreateRow.itemsDisabled) {
 				ItemStack item = event.getCurrentItem();
 				ItemStack item2 = event.getCursor();
