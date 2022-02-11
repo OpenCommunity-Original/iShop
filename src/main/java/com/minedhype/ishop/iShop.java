@@ -48,6 +48,7 @@ public class iShop extends JavaPlugin {
 		getCommand("goodtrade").setExecutor(new CommandShop());
 		int delayTime;
 		try {
+			Class.forName("org.sqlite.JDBC");
 			delayTime = config.getInt("shopsDatabaseLoadDelay");
 		} catch(Exception e) { delayTime = 0; }
 		if(delayTime < 1)
