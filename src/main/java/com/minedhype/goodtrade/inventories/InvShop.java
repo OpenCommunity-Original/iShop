@@ -88,7 +88,6 @@ public class InvShop extends GUI {
                             });
                         else {
                             placeItem(y * 9 + x, GUI.createItem(Material.LIME_DYE, ChatColor.BOLD + Messages.SHOP_TITLE_BUYACTION.toString()), p -> {
-                                p.closeInventory();
                                 shop.buy(p, index);
                             });
                         }

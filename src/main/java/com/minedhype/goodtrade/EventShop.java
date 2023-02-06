@@ -286,8 +286,7 @@ public class EventShop implements Listener {
                 return;
             Optional<Shop> shop = Shop.getShopByLocation(attachedBlock);
             if (!shop.isPresent() || shop.get().isOwner(event.getPlayer().getUniqueId()) || event.getPlayer().hasPermission(Permission.SHOP_ADMIN.toString())) {
-            }
-            else
+            } else
                 event.setCancelled(true);
         }
     }
@@ -305,8 +304,7 @@ public class EventShop implements Listener {
             Block attachedBlock = event.getEntity().getLocation().getBlock().getRelative(blockFace.getOppositeFace());
             Optional<Shop> shop = Shop.getShopByLocation(attachedBlock.getLocation());
             if (!shop.isPresent() || shop.get().isOwner(event.getDamager().getUniqueId()) || event.getDamager().hasPermission(Permission.SHOP_ADMIN.toString())) {
-            }
-            else
+            } else
                 event.setCancelled(true);
         }
     }
@@ -339,8 +337,7 @@ public class EventShop implements Listener {
             Block attachedBlock = event.getEntity().getLocation().getBlock().getRelative(blockFace);
             Optional<Shop> shop = Shop.getShopByLocation(attachedBlock.getLocation());
             if (!shop.isPresent() || shop.get().isOwner(event.getRemover().getUniqueId()) || event.getRemover().hasPermission(Permission.SHOP_ADMIN.toString())) {
-            }
-            else
+            } else
                 event.setCancelled(true);
         }
     }
@@ -352,8 +349,7 @@ public class EventShop implements Listener {
             Block attachedBlock = event.getEntity().getLocation().getBlock().getRelative(blockFace);
             Optional<Shop> shop = Shop.getShopByLocation(attachedBlock.getLocation());
             if (!shop.isPresent()) {
-            }
-            else
+            } else
                 event.setCancelled(true);
         }
     }
@@ -365,8 +361,7 @@ public class EventShop implements Listener {
             Block attachedBlock = event.getRightClicked().getLocation().getBlock().getRelative(blockFace.getOppositeFace());
             Optional<Shop> shop = Shop.getShopByLocation(attachedBlock.getLocation());
             if (!shop.isPresent() || shop.get().isOwner(event.getPlayer().getUniqueId()) || event.getPlayer().hasPermission(Permission.SHOP_ADMIN.toString())) {
-            }
-            else
+            } else
                 event.setCancelled(true);
         }
     }

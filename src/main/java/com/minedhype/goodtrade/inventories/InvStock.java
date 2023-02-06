@@ -109,7 +109,8 @@ public class InvStock extends GUI {
         stock = stockOpt.orElseGet(() -> new StockShop(owner, pag));
         Inventory inv = stock.getInventory();
         for (int i = 0; i < 45; i++) {
-            placeItem(i, inv.getItem(i));}
+            placeItem(i, inv.getItem(i));
+        }
         for (int i = 45; i < 54; i++) {
             if (i == 46 && pag > 4 && stockPages >= 10)
                 placeItem(i, GUI.createItem(Material.SPECTRAL_ARROW, Messages.SHOP_PAGE_SKIPPREV.toString()), p -> openPage(p, pag - 5));
