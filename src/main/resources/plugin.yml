@@ -1,5 +1,5 @@
 name: GoodTrade
-main: com.minedhype.ishop.iShop
+main: com.minedhype.goodtrade.GoodTrade
 description: Item trading shops with unique GUI!
 authors: [Beez0r, Envel]
 version: "${version}"

@@ -1,4 +1,3 @@
-# iShop - https://www.spigotmc.org/resources/ishop.84555/
 # The block you want to open the shop GUI
 # Shop GUI will be activated only by left or right click
 shopBlock: 'minecraft:barrel'
@@ -40,7 +39,7 @@ disabledWorldList:
   - world_nether
   - world_the_end
 
-# This enables admin shops that don't need stock. Created by typing /shop adminshop, requires ishop.admin permission
+# This enables admin shops that don't need stock. Created by typing /shop adminshop, requires goodtrade.admin permission
 enableAdminShop: false
 
 # Set player head for admin shops when listing using UUID. Default is 00000000-0000-0000-0000-000000000000
@@ -50,7 +49,7 @@ adminPlayerHeadShops: 00000000-0000-0000-0000-000000000000
 enableStockAccessFromShopGUI: false
 
 # Allows players to access the stock GUI by typing /shop stock
-# Players with ishop.stock permission will bypass if disabled
+# Players with goodtrade.stock permission will bypass if disabled
 enableStockCommand: false
 
 # Number of default stock pages to have in the stock GUI
@@ -117,7 +116,7 @@ showParticles: true
 usePermissions: false
 
 # Only works if usePermissions is set to false
-# If it's set to true, then you'll need to edit the limit via permission nodes for example; ishop.create.limit.5
+# If it's set to true, then you'll need to edit the limit via permission nodes for example; goodtrade.create.limit.5
 # Set to -1 to disable shop limit
 defaultShopLimit: 5
 
@@ -173,7 +172,7 @@ saveDatabase: 10
 
 # Customizable Messages
 adminShop: "Admin Shop #%id"
-adminShopDisabled: "&cAdmin shops have been disabled!"
+adminShopDisabled: "  &2&lGoodTrade &cAdmin shops have been disabled!"
 broadcastOff: "Broadcast OFF"
 broadcastOn: "Broadcast ON"
 buy: "&7You bought&a %in &7for&c %out&7!"
@@ -246,7 +245,7 @@ outOfStockRange: "&cYou are too far away from your shop(s) to access stock inven
 countAmount: "&aTotal amount of %item found: %amount"
 countEmpty: "&cCannot find any %item in stock inventory!"
 countError: "&cGiven item to search stock for does not exist!"
-outsideRegion: "&cCannot create shop outside of ishop region!"
+outsideRegion: "&cCannot create shop outside of goodtrade region!"
 noClaimPermission: "&cYou do not have permission in this claim to create a shop!"
 pageSkipAhead: "5 Pages >>"
 pageSkipPrev: "<< 5 Pages"
