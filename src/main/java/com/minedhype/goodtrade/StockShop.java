@@ -19,10 +19,7 @@ public class StockShop {
     private final Inventory inventory;
     private final int pag;
 
-
-    public StockShop(UUID owner, int pag) {
-        this(owner, Bukkit.createInventory(null, InventoryType.CHEST, Component.text(ChatColor.GREEN + Bukkit.getOfflinePlayer(owner).getName() + "'s shop")), pag);
-    }
+    public StockShop(UUID owner, int pag) { this(owner, Bukkit.createInventory(null, 45, ChatColor.GREEN + Bukkit.getOfflinePlayer(owner).getName()+"'s shop"), pag); }
 
     public StockShop(UUID owner, Inventory inv, int pag) {
         this.owner = owner;
@@ -31,42 +28,35 @@ public class StockShop {
         stocks.add(this);
     }
 
-    public static Optional<StockShop> getStockShopByOwner(UUID owner, int pag) {
-        return stocks.parallelStream().filter(t -> t.owner.equals(owner) && t.pag == pag).findFirst();
-    }
+    public static Optional<StockShop> getStockShopByOwner(UUID owner, int pag) { return stocks.parallelStream().filter(t -> t.owner.equals(owner) && t.pag == pag).findFirst(); }
 
     public static void saveData() {
-        if (!hasStock())
+        if(!hasStock())
             return;
         PreparedStatement stmt = null;
         try {
             stmt = GoodTrade.getConnection().prepareStatement("DELETE FROM zooMercaStocks;");
             stmt.execute();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
+        } catch (Exception e) { e.printStackTrace(); }
+        finally {
             try {
-                if (stmt != null)
+                if(stmt != null)
                     stmt.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            } catch (Exception e) { e.printStackTrace(); }
         }
-        for (StockShop stock : stocks)
+        for(StockShop stock : stocks)
             stock.saveStockData();
     }
 
-    private static boolean hasStock() {
-        return (int) stocks.parallelStream().filter(stock -> Arrays.asList(stock.getInventory().getContents()).parallelStream().anyMatch(item -> item != null && item.getAmount() > 0)).count() > 0;
-    }
+    private static boolean hasStock() { return (int) stocks.parallelStream().filter(stock -> Arrays.asList(stock.getInventory().getContents()).parallelStream().anyMatch(item -> item != null && item.getAmount() > 0)).count() > 0; }
 
     private void saveStockData() {
         PreparedStatement stmt = null;
         try {
             stmt = GoodTrade.getConnection().prepareStatement("INSERT INTO zooMercaStocks (owner, items, pag) VALUES (?,?,?);");
             JsonArray items = new JsonArray();
-            for (ItemStack item : inventory.getContents()) {
-                if (item == null)
+            for(ItemStack item : inventory.getContents()) {
+                if(item == null)
                     continue;
                 YamlConfiguration config = new YamlConfiguration();
                 item.serialize().forEach(config::set);
@@ -78,15 +68,12 @@ public class StockShop {
             stmt.setString(2, itemsJson);
             stmt.setInt(3, pag);
             stmt.execute();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
+        } catch (Exception e) { e.printStackTrace(); }
+        finally {
             try {
-                if (stmt != null)
+                if(stmt != null)
                     stmt.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            } catch (Exception e) { e.printStackTrace(); }
         }
     }
 
@@ -95,11 +82,11 @@ public class StockShop {
     }
 
     public void setInventory(Inventory inventory) {
-        for (int i = 0; i < 45; i++)
+        for(int i=0; i<45; i++)
             this.inventory.setItem(i, inventory.getItem(i));
     }
-
     public UUID getOwner() {
         return owner;
     }
 }
+

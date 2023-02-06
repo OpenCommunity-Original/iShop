@@ -77,9 +77,8 @@ public class EventShop implements Listener {
         if (!block.getType().equals(stockBlk) && !block.getType().equals(shopBlk) && !multipleShopBlocks && !multipleStockBlocks)
             return;
         if (block.getType().equals(stockBlk) && block.getType().equals(shopBlk) && shopEnabled) {
-            boolean isShopLoc = true;
             Optional<Shop> shop = Shop.getShopByLocation(block.getLocation());
-            if (!shop.isPresent() || !isShopLoc)
+            if (!shop.isPresent())
                 return;
             if (placeFrameSign)
                 if (event.getPlayer().isSneaking() && event.getAction().equals(Action.RIGHT_CLICK_BLOCK) && (shop.get().isOwner(event.getPlayer().getUniqueId()) || event.getPlayer().hasPermission(Permission.SHOP_ADMIN.toString())) && (event.getPlayer().getInventory().getItemInMainHand().getType().toString().endsWith("_SIGN") || event.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.ITEM_FRAME)))
@@ -107,9 +106,8 @@ public class EventShop implements Listener {
             return;
         }
         if (block.getType().equals(shopBlk) && shopEnabled) {
-            boolean isShopLoc = true;
             Optional<Shop> shop = Shop.getShopByLocation(block.getLocation());
-            if (!shop.isPresent() || !isShopLoc)
+            if (!shop.isPresent())
                 return;
             if (placeFrameSign)
                 if (event.getPlayer().isSneaking() && event.getAction().equals(Action.RIGHT_CLICK_BLOCK) && (shop.get().isOwner(event.getPlayer().getUniqueId()) || event.getPlayer().hasPermission(Permission.SHOP_ADMIN.toString())) && (event.getPlayer().getInventory().getItemInMainHand().getType().toString().endsWith("_SIGN") || event.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.ITEM_FRAME)))
@@ -140,9 +138,8 @@ public class EventShop implements Listener {
             for (String shopBlocks : multipleShopBlock) {
                 Material shopListBlocks = Material.matchMaterial(shopBlocks);
                 if (shopListBlocks != null && block.getType().equals(shopListBlocks)) {
-                    boolean isShopLoc = true;
                     Optional<Shop> shop = Shop.getShopByLocation(block.getLocation());
-                    if (!shop.isPresent() || !isShopLoc)
+                    if (!shop.isPresent())
                         return;
                     if (placeFrameSign)
                         if (event.getPlayer().isSneaking() && event.getAction().equals(Action.RIGHT_CLICK_BLOCK) && (shop.get().isOwner(event.getPlayer().getUniqueId()) || event.getPlayer().hasPermission(Permission.SHOP_ADMIN.toString())) && (event.getPlayer().getInventory().getItemInMainHand().getType().toString().endsWith("_SIGN") || event.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.ITEM_FRAME)))
@@ -172,8 +169,8 @@ public class EventShop implements Listener {
             }
         }
         if (block.getType().equals(stockBlk) && stockEnabled) {
-            boolean isShopLoc = true;
-            if (!isShopLoc || event.getAction() == Action.RIGHT_CLICK_BLOCK || event.getPlayer().isSneaking())
+
+            if (event.getAction() == Action.RIGHT_CLICK_BLOCK || event.getPlayer().isSneaking())
                 return;
             event.setCancelled(true);
             if (event.getAction() == Action.LEFT_CLICK_BLOCK) {
@@ -224,8 +221,7 @@ public class EventShop implements Listener {
             for (String stockBlocks : multipleStockBlock) {
                 Material stockListBlocks = Material.matchMaterial(stockBlocks);
                 if (stockListBlocks != null && block.getType().equals(stockListBlocks)) {
-                    boolean isShopLoc = true;
-                    if (!isShopLoc || event.getAction() == Action.RIGHT_CLICK_BLOCK || event.getPlayer().isSneaking())
+                    if (event.getAction() == Action.RIGHT_CLICK_BLOCK || event.getPlayer().isSneaking())
                         return;
                     event.setCancelled(true);
                     if (event.getAction() == Action.LEFT_CLICK_BLOCK) {
@@ -281,7 +277,7 @@ public class EventShop implements Listener {
         if (placeFrameSign && shopEnabled) {
             Location attachedBlock;
             if (event.getBlock().getBlockData() instanceof WallSign wallSign) {
-				BlockFace blockFace = wallSign.getFacing();
+                BlockFace blockFace = wallSign.getFacing();
                 Block block = event.getBlock().getRelative(blockFace.getOppositeFace());
                 attachedBlock = block.getLocation();
             } else if (event.getBlock().getBlockData() instanceof org.bukkit.block.data.type.Sign)
@@ -290,7 +286,7 @@ public class EventShop implements Listener {
                 return;
             Optional<Shop> shop = Shop.getShopByLocation(attachedBlock);
             if (!shop.isPresent() || shop.get().isOwner(event.getPlayer().getUniqueId()) || event.getPlayer().hasPermission(Permission.SHOP_ADMIN.toString())) {
-			}
+            }
             else
                 event.setCancelled(true);
         }
@@ -309,7 +305,7 @@ public class EventShop implements Listener {
             Block attachedBlock = event.getEntity().getLocation().getBlock().getRelative(blockFace.getOppositeFace());
             Optional<Shop> shop = Shop.getShopByLocation(attachedBlock.getLocation());
             if (!shop.isPresent() || shop.get().isOwner(event.getDamager().getUniqueId()) || event.getDamager().hasPermission(Permission.SHOP_ADMIN.toString())) {
-			}
+            }
             else
                 event.setCancelled(true);
         }
@@ -343,7 +339,7 @@ public class EventShop implements Listener {
             Block attachedBlock = event.getEntity().getLocation().getBlock().getRelative(blockFace);
             Optional<Shop> shop = Shop.getShopByLocation(attachedBlock.getLocation());
             if (!shop.isPresent() || shop.get().isOwner(event.getRemover().getUniqueId()) || event.getRemover().hasPermission(Permission.SHOP_ADMIN.toString())) {
-			}
+            }
             else
                 event.setCancelled(true);
         }
@@ -356,7 +352,7 @@ public class EventShop implements Listener {
             Block attachedBlock = event.getEntity().getLocation().getBlock().getRelative(blockFace);
             Optional<Shop> shop = Shop.getShopByLocation(attachedBlock.getLocation());
             if (!shop.isPresent()) {
-			}
+            }
             else
                 event.setCancelled(true);
         }
@@ -369,7 +365,7 @@ public class EventShop implements Listener {
             Block attachedBlock = event.getRightClicked().getLocation().getBlock().getRelative(blockFace.getOppositeFace());
             Optional<Shop> shop = Shop.getShopByLocation(attachedBlock.getLocation());
             if (!shop.isPresent() || shop.get().isOwner(event.getPlayer().getUniqueId()) || event.getPlayer().hasPermission(Permission.SHOP_ADMIN.toString())) {
-			}
+            }
             else
                 event.setCancelled(true);
         }

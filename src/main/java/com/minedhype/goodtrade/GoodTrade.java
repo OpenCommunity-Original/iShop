@@ -180,8 +180,8 @@ public class GoodTrade extends JavaPlugin {
         try {
             config.load(this.configFile);
             String ver = config.getString("configVersion");
-			if (ver.equals("3.7")) {
-			}
+            if (ver.equals("3.7")) {
+            }
         } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
         }

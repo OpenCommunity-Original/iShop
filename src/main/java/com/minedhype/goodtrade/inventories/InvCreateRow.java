@@ -74,7 +74,7 @@ public class InvCreateRow extends GUI {
                                 if (in1.getType().equals(disabledItemsList) || in2.getType().equals(disabledItemsList) || out1.getType().equals(disabledItemsList) || out2.getType().equals(disabledItemsList))
                                     return;
                                 if (in1.getType().toString().contains("SHULKER_BOX") && in1.getItemMeta() instanceof BlockStateMeta itemMeta1) {
-									ShulkerBox shulkerBox1 = (ShulkerBox) itemMeta1.getBlockState();
+                                    ShulkerBox shulkerBox1 = (ShulkerBox) itemMeta1.getBlockState();
                                     if (shulkerBox1.getInventory().contains(disabledItemsList))
                                         return;
                                 } else if (in1.getType().equals(Material.BUNDLE)) {
@@ -88,7 +88,7 @@ public class InvCreateRow extends GUI {
                                     }
                                 }
                                 if (in2.getType().toString().contains("SHULKER_BOX") && in2.getItemMeta() instanceof BlockStateMeta itemMeta2) {
-									ShulkerBox shulkerBox2 = (ShulkerBox) itemMeta2.getBlockState();
+                                    ShulkerBox shulkerBox2 = (ShulkerBox) itemMeta2.getBlockState();
                                     if (shulkerBox2.getInventory().contains(disabledItemsList))
                                         return;
                                 } else if (in2.getType().equals(Material.BUNDLE)) {
@@ -102,7 +102,7 @@ public class InvCreateRow extends GUI {
                                     }
                                 }
                                 if (out1.getType().toString().contains("SHULKER_BOX") && out1.getItemMeta() instanceof BlockStateMeta itemMeta3) {
-									ShulkerBox shulkerBox3 = (ShulkerBox) itemMeta3.getBlockState();
+                                    ShulkerBox shulkerBox3 = (ShulkerBox) itemMeta3.getBlockState();
                                     if (shulkerBox3.getInventory().contains(disabledItemsList))
                                         return;
                                 } else if (out1.getType().equals(Material.BUNDLE)) {
@@ -116,7 +116,7 @@ public class InvCreateRow extends GUI {
                                     }
                                 }
                                 if (out2.getType().toString().contains("SHULKER_BOX") && out2.getItemMeta() instanceof BlockStateMeta itemMeta4) {
-									ShulkerBox shulkerBox4 = (ShulkerBox) itemMeta4.getBlockState();
+                                    ShulkerBox shulkerBox4 = (ShulkerBox) itemMeta4.getBlockState();
                                     if (shulkerBox4.getInventory().contains(disabledItemsList))
                                         return;
                                 } else if (out2.getType().equals(Material.BUNDLE)) {

@@ -59,7 +59,7 @@ public class CommandShop implements CommandExecutor {
                 sender.sendMessage(Messages.NOT_A_PLAYER.toString());
             return false;
         }
-		if (args.length == 0)
+        if (args.length == 0)
             Bukkit.getServer().getScheduler().runTaskAsynchronously(GoodTrade.getPlugin(), () -> listSubCmd(player, label));
         else if (args[0].equalsIgnoreCase("adminshop"))
             adminShop(player);

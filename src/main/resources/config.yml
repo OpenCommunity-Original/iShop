@@ -56,7 +56,7 @@ enableStockCommand: false
 stockPages: 2
 
 # Maximum number of stock pages to have in the stock GUI if usePermissions is set to true
-maxStockPages: 2
+maxStockPages: 3
 
 # Enable sending of messages when players have purchased or sold item(s) from shops
 enableShopNotifications: true

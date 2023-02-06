@@ -1,9 +1,9 @@
 package com.minedhype.goodtrade.inventories;
 
+import com.minedhype.goodtrade.GoodTrade;
 import com.minedhype.goodtrade.Messages;
 import com.minedhype.goodtrade.Shop;
 import com.minedhype.goodtrade.gui.GUI;
-import com.minedhype.goodtrade.GoodTrade;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;

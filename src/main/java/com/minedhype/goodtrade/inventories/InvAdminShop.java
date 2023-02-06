@@ -9,7 +9,6 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.PermissionAttachmentInfo;
 
-import java.util.Objects;
 import java.util.Optional;
 
 public class InvAdminShop extends GUI {
@@ -35,7 +34,7 @@ public class InvAdminShop extends GUI {
         OfflinePlayer pl = Bukkit.getOfflinePlayer(shop.getOwner());
         if (pl == null)
             return msg.replaceAll("%player%", "<unknown>");
-        return msg.replaceAll("%player%", Objects.requireNonNull(pl.getName())).replaceAll("%id", shopId);
+        return msg.replaceAll("%player%", pl.getName()).replaceAll("%id", shopId);
     }
 
     private void updateItems(Player player) {
@@ -43,7 +42,7 @@ public class InvAdminShop extends GUI {
             for (int y = 0; y < 6; y++) {
                 if (x == 1) {
                     if (y == 0)
-                        placeItem(9 + x, GUI.createItem(Material.GREEN_STAINED_GLASS_PANE, ChatColor.GREEN + Messages.SHOP_TITLE_SELL.toString()));
+                        placeItem(y * 9 + x, GUI.createItem(Material.GREEN_STAINED_GLASS_PANE, ChatColor.GREEN + Messages.SHOP_TITLE_SELL.toString()));
                     else {
                         Optional<RowStore> row = shop.getRow(y - 1);
                         if (row.isPresent())
@@ -51,7 +50,7 @@ public class InvAdminShop extends GUI {
                     }
                 } else if (x == 2) {
                     if (y == 0)
-                        placeItem(x, GUI.createItem(Material.GREEN_STAINED_GLASS_PANE, ChatColor.GREEN + Messages.SHOP_TITLE_SELL2.toString()));
+                        placeItem(y * 9 + x, GUI.createItem(Material.GREEN_STAINED_GLASS_PANE, ChatColor.GREEN + Messages.SHOP_TITLE_SELL2.toString()));
                     else {
                         Optional<RowStore> row = shop.getRow(y - 1);
                         if (row.isPresent())
@@ -59,7 +58,7 @@ public class InvAdminShop extends GUI {
                     }
                 } else if (x == 4) {
                     if (y == 0)
-                        placeItem(x, GUI.createItem(Material.RED_STAINED_GLASS_PANE, ChatColor.RED + Messages.SHOP_TITLE_BUY.toString()));
+                        placeItem(y * 9 + x, GUI.createItem(Material.RED_STAINED_GLASS_PANE, ChatColor.RED + Messages.SHOP_TITLE_BUY.toString()));
                     else {
                         Optional<RowStore> row = shop.getRow(y - 1);
                         if (row.isPresent())
@@ -67,7 +66,7 @@ public class InvAdminShop extends GUI {
                     }
                 } else if (x == 5) {
                     if (y == 0)
-                        placeItem(9 + x, GUI.createItem(Material.RED_STAINED_GLASS_PANE, ChatColor.RED + Messages.SHOP_TITLE_BUY2.toString()));
+                        placeItem(y * 9 + x, GUI.createItem(Material.RED_STAINED_GLASS_PANE, ChatColor.RED + Messages.SHOP_TITLE_BUY2.toString()));
                     else {
                         Optional<RowStore> row = shop.getRow(y - 1);
                         if (row.isPresent())
@@ -90,7 +89,7 @@ public class InvAdminShop extends GUI {
                     }
                 } else if (x == 7 && y == 0) {
                     if (stockGUIShop && !shop.isAdmin() && shop.getOwner().equals(player.getUniqueId())) {
-                        placeItem(x, GUI.createItem(Material.CHEST, Messages.SHOP_TITLE_STOCK.toString()), p -> {
+                        placeItem(y * 9 + x, GUI.createItem(Material.CHEST, Messages.SHOP_TITLE_STOCK.toString()), p -> {
                             p.closeInventory();
                             InvStock inv = InvStock.getInvStock(player.getUniqueId());
                             int maxStockPages = maxPages;
@@ -120,15 +119,15 @@ public class InvAdminShop extends GUI {
                             inv.open(player);
                         });
                     } else
-                        placeItem(9 + x, GUI.createItem(Material.BLACK_STAINED_GLASS_PANE, ""));
+                        placeItem(y * 9 + x, GUI.createItem(Material.BLACK_STAINED_GLASS_PANE, ""));
                 } else if (x == 8 && y == 0) {
                     if (InvShop.listAllShops && Shop.showOwnedShops && remoteManage) {
-                        placeItem(9 + x, GUI.createItem(Material.END_CRYSTAL, Messages.SHOP_LIST_ALL.toString()), p -> {
+                        placeItem(y * 9 + x, GUI.createItem(Material.END_CRYSTAL, Messages.SHOP_LIST_ALL.toString()), p -> {
                             p.closeInventory();
                             p.performCommand("shop shops");
                         });
                     } else
-                        placeItem(9 + x, GUI.createItem(Material.BLACK_STAINED_GLASS_PANE, ""));
+                        placeItem(y * 9 + x, GUI.createItem(Material.BLACK_STAINED_GLASS_PANE, ""));
                 } else if (x == 8 && y >= 1) {
                     final Optional<RowStore> row = shop.getRow(y - 1);
                     if (shop.isAdmin()) {

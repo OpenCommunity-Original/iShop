@@ -16,7 +16,7 @@ public class GUIEvent implements Listener {
     public void onClick(InventoryClickEvent e) {
         if (!(e.getWhoClicked() instanceof Player player))
             return;
-		GUI gui = GUI.inventoriesOpen.get(player.getName());
+        GUI gui = GUI.inventoriesOpen.get(player.getName());
         if (gui == null)
             return;
         GUIAction action = gui.getActions().get(e.getRawSlot());
@@ -29,7 +29,7 @@ public class GUIEvent implements Listener {
     public void onDrag(InventoryDragEvent e) {
         if (!(e.getWhoClicked() instanceof Player player))
             return;
-		GUI gui = GUI.inventoriesOpen.get(player.getName());
+        GUI gui = GUI.inventoriesOpen.get(player.getName());
         if (gui == null)
             return;
         gui.onDrag(e);

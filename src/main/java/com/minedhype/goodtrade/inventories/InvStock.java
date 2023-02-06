@@ -44,12 +44,12 @@ public class InvStock extends GUI {
         if (event.getRawSlot() >= 45 && event.getRawSlot() < 54)
             return;
         if (event.getRawSlot() >= 54 && !player.hasPermission(Permission.SHOP_ADMIN.toString())) {
-            /*if (InvCreateRow.strictStock) {
+            if (InvCreateRow.strictStock) {
                 ItemStack item = event.getCurrentItem();
                 ItemStack item2 = event.getCursor();
                 if (Shop.strictStockShopCheck(item, owner) || Shop.strictStockShopCheck(item2, owner))
                     return;
-            }*/
+            }
             if (InvCreateRow.itemsDisabled) {
                 ItemStack item = event.getCurrentItem();
                 ItemStack item2 = event.getCursor();
@@ -64,7 +64,7 @@ public class InvStock extends GUI {
                             if (item.getType().equals(disabledItemsList))
                                 return;
                             if (item.getType().toString().contains("SHULKER_BOX") && item.getItemMeta() instanceof BlockStateMeta itemMeta1) {
-								ShulkerBox shulkerBox1 = (ShulkerBox) itemMeta1.getBlockState();
+                                ShulkerBox shulkerBox1 = (ShulkerBox) itemMeta1.getBlockState();
                                 if (shulkerBox1.getInventory().contains(disabledItemsList))
                                     return;
                             } else if (item.getType().equals(Material.BUNDLE)) {
@@ -82,7 +82,7 @@ public class InvStock extends GUI {
                             if (item2.getType().equals(disabledItemsList))
                                 return;
                             if (item2.getType().toString().contains("SHULKER_BOX") && item2.getItemMeta() instanceof BlockStateMeta itemMeta2) {
-								ShulkerBox shulkerBox2 = (ShulkerBox) itemMeta2.getBlockState();
+                                ShulkerBox shulkerBox2 = (ShulkerBox) itemMeta2.getBlockState();
                                 if (shulkerBox2.getInventory().contains(disabledItemsList))
                                     return;
                             } else if (item2.getType().equals(Material.BUNDLE)) {
@@ -108,8 +108,8 @@ public class InvStock extends GUI {
         StockShop stock;
         stock = stockOpt.orElseGet(() -> new StockShop(owner, pag));
         Inventory inv = stock.getInventory();
-        for (int i = 0; i < 45; i++)
-            placeItem(i, inv.getItem(i));
+        for (int i = 0; i < 45; i++) {
+            placeItem(i, inv.getItem(i));}
         for (int i = 45; i < 54; i++) {
             if (i == 46 && pag > 4 && stockPages >= 10)
                 placeItem(i, GUI.createItem(Material.SPECTRAL_ARROW, Messages.SHOP_PAGE_SKIPPREV.toString()), p -> openPage(p, pag - 5));

@@ -218,7 +218,7 @@ public class Shop {
                     boolean out0Changed = false;
                     boolean out0Changed2 = false;
                     if (row0.get().getItemOut().getType().equals(Material.ENCHANTED_BOOK) && row0.get().getItemOut().getItemMeta() instanceof EnchantmentStorageMeta metaOut) {
-						StringBuilder sb = new StringBuilder();
+                        StringBuilder sb = new StringBuilder();
                         sb.append("enchanted book: ");
                         for (Map.Entry<Enchantment, Integer> entry : metaOut.getStoredEnchants().entrySet()) {
                             String enchants = entry.getKey().getKey().toString().replaceAll("_", " ").replaceAll("minecraft:", "");
@@ -229,7 +229,7 @@ public class Shop {
                         out0Changed = true;
                     }
                     if (row0.get().getItemOut2().getType().equals(Material.ENCHANTED_BOOK) && row0.get().getItemOut2().getItemMeta() instanceof EnchantmentStorageMeta metaOut) {
-						StringBuilder sb = new StringBuilder();
+                        StringBuilder sb = new StringBuilder();
                         sb.append("enchanted book: ");
                         for (Map.Entry<Enchantment, Integer> entry : metaOut.getStoredEnchants().entrySet()) {
                             String enchants = entry.getKey().getKey().toString().replaceAll("_", " ").replaceAll("minecraft:", "");
@@ -259,7 +259,7 @@ public class Shop {
                     boolean out1Changed = false;
                     boolean out1Changed2 = false;
                     if (row1.get().getItemOut().getType().equals(Material.ENCHANTED_BOOK) && row1.get().getItemOut().getItemMeta() instanceof EnchantmentStorageMeta metaOut) {
-						StringBuilder sb = new StringBuilder();
+                        StringBuilder sb = new StringBuilder();
                         sb.append("enchanted book: ");
                         for (Map.Entry<Enchantment, Integer> entry : metaOut.getStoredEnchants().entrySet()) {
                             String enchants = entry.getKey().getKey().toString().replaceAll("_", " ").replaceAll("minecraft:", "");
@@ -270,7 +270,7 @@ public class Shop {
                         out1Changed = true;
                     }
                     if (row1.get().getItemOut2().getType().equals(Material.ENCHANTED_BOOK) && row1.get().getItemOut2().getItemMeta() instanceof EnchantmentStorageMeta metaOut) {
-						StringBuilder sb = new StringBuilder();
+                        StringBuilder sb = new StringBuilder();
                         sb.append("enchanted book: ");
                         for (Map.Entry<Enchantment, Integer> entry : metaOut.getStoredEnchants().entrySet()) {
                             String enchants = entry.getKey().getKey().toString().replaceAll("_", " ").replaceAll("minecraft:", "");
@@ -300,7 +300,7 @@ public class Shop {
                     boolean out2Changed = false;
                     boolean out2Changed2 = false;
                     if (row2.get().getItemOut().getType().equals(Material.ENCHANTED_BOOK) && row2.get().getItemOut().getItemMeta() instanceof EnchantmentStorageMeta metaOut) {
-						StringBuilder sb = new StringBuilder();
+                        StringBuilder sb = new StringBuilder();
                         sb.append("enchanted book: ");
                         for (Map.Entry<Enchantment, Integer> entry : metaOut.getStoredEnchants().entrySet()) {
                             String enchants = entry.getKey().getKey().toString().replaceAll("_", " ").replaceAll("minecraft:", "");
@@ -311,7 +311,7 @@ public class Shop {
                         out2Changed = true;
                     }
                     if (row2.get().getItemOut2().getType().equals(Material.ENCHANTED_BOOK) && row2.get().getItemOut2().getItemMeta() instanceof EnchantmentStorageMeta metaOut) {
-						StringBuilder sb = new StringBuilder();
+                        StringBuilder sb = new StringBuilder();
                         sb.append("enchanted book: ");
                         for (Map.Entry<Enchantment, Integer> entry : metaOut.getStoredEnchants().entrySet()) {
                             String enchants = entry.getKey().getKey().toString().replaceAll("_", " ").replaceAll("minecraft:", "");
@@ -341,7 +341,7 @@ public class Shop {
                     boolean out3Changed = false;
                     boolean out3Changed2 = false;
                     if (row3.get().getItemOut().getType().equals(Material.ENCHANTED_BOOK) && row3.get().getItemOut().getItemMeta() instanceof EnchantmentStorageMeta metaOut) {
-						StringBuilder sb = new StringBuilder();
+                        StringBuilder sb = new StringBuilder();
                         sb.append("enchanted book: ");
                         for (Map.Entry<Enchantment, Integer> entry : metaOut.getStoredEnchants().entrySet()) {
                             String enchants = entry.getKey().getKey().toString().replaceAll("_", " ").replaceAll("minecraft:", "");
@@ -352,7 +352,7 @@ public class Shop {
                         out3Changed = true;
                     }
                     if (row3.get().getItemOut2().getType().equals(Material.ENCHANTED_BOOK) && row3.get().getItemOut2().getItemMeta() instanceof EnchantmentStorageMeta metaOut) {
-						StringBuilder sb = new StringBuilder();
+                        StringBuilder sb = new StringBuilder();
                         sb.append("enchanted book: ");
                         for (Map.Entry<Enchantment, Integer> entry : metaOut.getStoredEnchants().entrySet()) {
                             String enchants = entry.getKey().getKey().toString().replaceAll("_", " ").replaceAll("minecraft:", "");
@@ -382,7 +382,7 @@ public class Shop {
                     boolean out4Changed = false;
                     boolean out4Changed2 = false;
                     if (row4.get().getItemOut().getType().equals(Material.ENCHANTED_BOOK) && row4.get().getItemOut().getItemMeta() instanceof EnchantmentStorageMeta metaOut) {
-						StringBuilder sb = new StringBuilder();
+                        StringBuilder sb = new StringBuilder();
                         sb.append("enchanted book: ");
                         for (Map.Entry<Enchantment, Integer> entry : metaOut.getStoredEnchants().entrySet()) {
                             String enchants = entry.getKey().getKey().toString().replaceAll("_", " ").replaceAll("minecraft:", "");
@@ -393,7 +393,7 @@ public class Shop {
                         out4Changed = true;
                     }
                     if (row4.get().getItemOut2().getType().equals(Material.ENCHANTED_BOOK) && row4.get().getItemOut2().getItemMeta() instanceof EnchantmentStorageMeta metaOut) {
-						StringBuilder sb = new StringBuilder();
+                        StringBuilder sb = new StringBuilder();
                         sb.append("enchanted book: ");
                         for (Map.Entry<Enchantment, Integer> entry : metaOut.getStoredEnchants().entrySet()) {
                             String enchants = entry.getKey().getKey().toString().replaceAll("_", " ").replaceAll("minecraft:", "");
@@ -712,7 +712,7 @@ public class Shop {
         int inA1, inA2, outA1, outA2;
         try {
             if (row.get().getItemIn().getType().equals(Material.ENCHANTED_BOOK) && row.get().getItemIn().getItemMeta() instanceof EnchantmentStorageMeta metaOut) {
-				StringBuilder sbIn1 = new StringBuilder();
+                StringBuilder sbIn1 = new StringBuilder();
                 sbIn1.append("enchanted book: ");
                 for (Map.Entry<Enchantment, Integer> entry : metaOut.getStoredEnchants().entrySet()) {
                     String enchants = entry.getKey().getKey().toString().replaceAll("_", " ").toLowerCase().replaceAll("minecraft:", "");
@@ -729,7 +729,7 @@ public class Shop {
         }
         try {
             if (row.get().getItemIn2().getType().equals(Material.ENCHANTED_BOOK) && row.get().getItemIn2().getItemMeta() instanceof EnchantmentStorageMeta metaOut) {
-				StringBuilder sbIn2 = new StringBuilder();
+                StringBuilder sbIn2 = new StringBuilder();
                 sbIn2.append("enchanted book: ");
                 for (Map.Entry<Enchantment, Integer> entry : metaOut.getStoredEnchants().entrySet()) {
                     String enchants = entry.getKey().getKey().toString().replaceAll("_", " ").toLowerCase().replaceAll("minecraft:", "");
@@ -746,7 +746,7 @@ public class Shop {
         }
         try {
             if (row.get().getItemOut().getType().equals(Material.ENCHANTED_BOOK) && row.get().getItemOut().getItemMeta() instanceof EnchantmentStorageMeta metaOut) {
-				StringBuilder sbOut1 = new StringBuilder();
+                StringBuilder sbOut1 = new StringBuilder();
                 sbOut1.append("enchanted book: ");
                 for (Map.Entry<Enchantment, Integer> entry : metaOut.getStoredEnchants().entrySet()) {
                     String enchants = entry.getKey().getKey().toString().replaceAll("_", " ").toLowerCase().replaceAll("minecraft:", "");
@@ -763,7 +763,7 @@ public class Shop {
         }
         try {
             if (row.get().getItemOut2().getType().equals(Material.ENCHANTED_BOOK) && row.get().getItemOut2().getItemMeta() instanceof EnchantmentStorageMeta metaOut) {
-				StringBuilder sbOut2 = new StringBuilder();
+                StringBuilder sbOut2 = new StringBuilder();
                 sbOut2.append("enchanted book: ");
                 for (Map.Entry<Enchantment, Integer> entry : metaOut.getStoredEnchants().entrySet()) {
                     String enchants = entry.getKey().getKey().toString().replaceAll("_", " ").toLowerCase().replaceAll("minecraft:", "");
