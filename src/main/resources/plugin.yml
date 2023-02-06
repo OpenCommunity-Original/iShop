@@ -1,0 +1,11 @@
+name: GoodTrade
+main: com.minedhype.ishop.iShop
+description: Item trading shops with unique GUI!
+authors: [Beez0r, Envel]
+version: "${version}"
+api-version: "1.19"
+softdepend: [Vault]
+commands:
+  goodtrade:
+    description: "/shop"
+    aliases: [shop]

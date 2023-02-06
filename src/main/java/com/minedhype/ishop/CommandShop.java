@@ -7,7 +7,6 @@ import java.util.Scanner;
 import java.util.UUID;
 import com.minedhype.ishop.inventories.InvCreateRow;
 import com.minedhype.ishop.inventories.InvShop;
-import me.ryanhamshire.GriefPrevention.ClaimPermission;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.milkbowl.vault.economy.Economy;
@@ -31,8 +30,6 @@ import org.json.simple.JSONValue;
 import com.minedhype.ishop.inventories.InvAdminShop;
 import com.minedhype.ishop.inventories.InvShopList;
 import com.minedhype.ishop.inventories.InvStock;
-import me.ryanhamshire.GriefPrevention.Claim;
-import me.ryanhamshire.GriefPrevention.GriefPrevention;
 
 public class CommandShop implements CommandExecutor {
 	@Override
@@ -55,7 +52,7 @@ public class CommandShop implements CommandExecutor {
 				return true;
 			}
 			else {
-				sender.sendMessage(ChatColor.GOLD + "iShop Console Commands:");
+				sender.sendMessage(ChatColor.GOLD + "GoodTrade Console Commands:");
 				sender.sendMessage(ChatColor.GRAY + label + " createlocation <player> <x> <y> <z> <world>");
 				sender.sendMessage(ChatColor.GRAY + label + " deletelocation <x> <y> <z> <world>");
 				sender.sendMessage(ChatColor.GRAY + label + " deleteid <id>");
@@ -65,7 +62,7 @@ public class CommandShop implements CommandExecutor {
 		}
 		if(!(sender instanceof Player)) {
 			if(sender instanceof ConsoleCommandSender) {
-				sender.sendMessage(ChatColor.GOLD + "iShop Console Commands:");
+				sender.sendMessage(ChatColor.GOLD + "GoodTrade Console Commands:");
 				sender.sendMessage(ChatColor.GRAY + label + " createlocation <player> <x> <y> <z> <world>");
 				sender.sendMessage(ChatColor.GRAY + label + " deletelocation <x> <y> <z> <world>");
 				sender.sendMessage(ChatColor.GRAY + label + " deleteid <id>");
@@ -133,7 +130,7 @@ public class CommandShop implements CommandExecutor {
 	}
 
 	private void listSubCmd(Player player, String label) {
-		player.sendMessage(ChatColor.GOLD + "iShop Commands:");
+		player.sendMessage(ChatColor.GOLD + "GoodTrade Commands:");
 		player.sendMessage(ChatColor.GRAY + "/" + label + " count <item>");
 		player.sendMessage(ChatColor.GRAY + "/" + label + " create");
 		player.sendMessage(ChatColor.GRAY + "/" + label + " delete");
@@ -252,22 +249,7 @@ public class CommandShop implements CommandExecutor {
 			}
 		}
 		boolean isShopLoc;
-		if(iShop.wgLoader != null)
-			isShopLoc = iShop.wgLoader.checkRegion(block);
-		else
-			isShopLoc = true;
-		if(!isShopLoc) {
-			player.sendMessage(Messages.WG_REGION.toString());
-			return;
-		}
-		boolean allowShopCreateInClaim = false;
-		if(iShop.gpLoader != null) {
-			Claim claim = GriefPrevention.instance.dataStore.getClaimAt(block.getLocation(), false, false, null);
-			if(claim == null || claim.checkPermission(player, ClaimPermission.Access, null) == null || claim.checkPermission(player, ClaimPermission.Build, null) == null || claim.checkPermission(player, ClaimPermission.Edit, null) == null || claim.checkPermission(player, ClaimPermission.Manage, null) == null || claim.checkPermission(player, ClaimPermission.Inventory, null) == null)
-				allowShopCreateInClaim = true;
-		}
-		else
-			allowShopCreateInClaim = true;
+		boolean allowShopCreateInClaim = true;
 		if(!allowShopCreateInClaim) {
 			player.sendMessage(Messages.GP_CLAIM.toString());
 			return;
@@ -398,7 +380,7 @@ public class CommandShop implements CommandExecutor {
 						}
 					if(!foundPlayer) {
 						player.sendMessage(Messages.NO_PLAYER_FOUND.toString());
-						Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[iShop] " + Messages.NO_PLAYER_FOUND);
+						Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[GoodTrade] " + Messages.NO_PLAYER_FOUND);
 						return;
 					}
 					shopOwner = foundPlayerUUID;
@@ -537,10 +519,10 @@ public class CommandShop implements CommandExecutor {
 					if(!foundPlayer) {
 						if(player != null) {
 							player.sendMessage(Messages.NO_PLAYER_FOUND.toString());
-							Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[iShop] " + Messages.NO_PLAYER_FOUND);
+							Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[GoodTrade] " + Messages.NO_PLAYER_FOUND);
 						}
 						else
-							Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[iShop] " + Messages.NO_PLAYER_FOUND);
+							Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[GoodTrade] " + Messages.NO_PLAYER_FOUND);
 						return;
 					}
 					shopOwner = foundPlayerUUID;
@@ -817,7 +799,7 @@ public class CommandShop implements CommandExecutor {
 					}
 				if(!foundPlayer) {
 					player.sendMessage(Messages.NO_PLAYER_FOUND.toString());
-					Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[iShop] " + Messages.NO_PLAYER_FOUND);
+					Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[GoodTrade] " + Messages.NO_PLAYER_FOUND);
 					return;
 				}
 				sOwner = foundPlayerUUID;
@@ -858,7 +840,7 @@ public class CommandShop implements CommandExecutor {
 						}
 					if(!foundPlayer) {
 						player.sendMessage(Messages.NO_PLAYER_FOUND.toString());
-						Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[iShop] " + Messages.NO_PLAYER_FOUND);
+						Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[GoodTrade] " + Messages.NO_PLAYER_FOUND);
 						return;
 					}
 					sOwner = foundPlayerUUID;
@@ -948,9 +930,9 @@ public class CommandShop implements CommandExecutor {
 		if(plugin != null)
 			plugin.createConfig();
 		if(player != null)
-			player.sendMessage(ChatColor.GREEN + "[iShop] " + Messages.SHOP_RELOAD);
+			player.sendMessage(ChatColor.GREEN + "[GoodTrade] " + Messages.SHOP_RELOAD);
 		else
-			Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "[iShop] " + Messages.SHOP_RELOAD);
+			Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "[GoodTrade] " + Messages.SHOP_RELOAD);
 		Bukkit.getScheduler().runTaskAsynchronously(iShop.getPlugin(), () -> {
 			EventShop.adminShopEnabled = iShop.config.getBoolean("enableAdminShop");
 			EventShop.noShopNoStock = iShop.config.getBoolean("mustOwnShopForStock");
@@ -1107,7 +1089,7 @@ public class CommandShop implements CommandExecutor {
 						}
 					if(!foundPlayer) {
 						player.sendMessage(Messages.NO_PLAYER_FOUND.toString());
-						Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[iShop] " + Messages.NO_PLAYER_FOUND);
+						Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[GoodTrade] " + Messages.NO_PLAYER_FOUND);
 						return;
 					}
 					sOwner = foundPlayerUUID;
@@ -1275,7 +1257,7 @@ public class CommandShop implements CommandExecutor {
 						}
 					if(!foundPlayer) {
 						player.sendMessage(Messages.NO_PLAYER_FOUND.toString());
-						Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[iShop] " + Messages.NO_PLAYER_FOUND);
+						Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[GoodTrade] " + Messages.NO_PLAYER_FOUND);
 						return;
 					}
 					sOwner = foundPlayerUUID;

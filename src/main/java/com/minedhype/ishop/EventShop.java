@@ -72,11 +72,7 @@ public class EventShop implements Listener {
 		if(!block.getType().equals(stockBlk) && !block.getType().equals(shopBlk) && !multipleShopBlocks && !multipleStockBlocks)
 			return;
 		if(block.getType().equals(stockBlk) && block.getType().equals(shopBlk) && shopEnabled) {
-			boolean isShopLoc;
-			if(iShop.wgLoader != null)
-				isShopLoc = iShop.wgLoader.checkRegion(block);
-			else
-				isShopLoc = true;
+			boolean isShopLoc = true;
 			Optional<Shop> shop = Shop.getShopByLocation(block.getLocation());
 			if(!shop.isPresent() || !isShopLoc)
 				return;
@@ -106,11 +102,7 @@ public class EventShop implements Listener {
 			return;
 		}
 		if(block.getType().equals(shopBlk) && shopEnabled) {
-			boolean isShopLoc;
-			if(iShop.wgLoader != null)
-				isShopLoc = iShop.wgLoader.checkRegion(block);
-			else
-				isShopLoc = true;
+			boolean isShopLoc = true;
 			Optional<Shop> shop = Shop.getShopByLocation(block.getLocation());
 			if(!shop.isPresent() || !isShopLoc)
 				return;
@@ -143,11 +135,7 @@ public class EventShop implements Listener {
 			for(String shopBlocks:multipleShopBlock) {
 				Material shopListBlocks = Material.matchMaterial(shopBlocks);
 				if(shopListBlocks != null && block.getType().equals(shopListBlocks)) {
-					boolean isShopLoc;
-					if(iShop.wgLoader != null)
-						isShopLoc = iShop.wgLoader.checkRegion(block);
-					else
-						isShopLoc = true;
+					boolean isShopLoc = true;
 					Optional<Shop> shop = Shop.getShopByLocation(block.getLocation());
 					if(!shop.isPresent() || !isShopLoc)
 						return;
@@ -179,11 +167,7 @@ public class EventShop implements Listener {
 			}
 		}
 		if(block.getType().equals(stockBlk) && stockEnabled) {
-			boolean isShopLoc;
-			if(iShop.wgLoader != null)
-				isShopLoc = iShop.wgLoader.checkRegion(block);
-			else
-				isShopLoc = true;
+			boolean isShopLoc = true;
 			if(!isShopLoc || event.getAction() == Action.RIGHT_CLICK_BLOCK || event.getPlayer().isSneaking())
 				return;
 			event.setCancelled(true);
@@ -231,11 +215,7 @@ public class EventShop implements Listener {
 			for(String stockBlocks:multipleStockBlock) {
 				Material stockListBlocks = Material.matchMaterial(stockBlocks);
 				if(stockListBlocks != null && block.getType().equals(stockListBlocks)) {
-					boolean isShopLoc;
-					if(iShop.wgLoader != null)
-						isShopLoc = iShop.wgLoader.checkRegion(block);
-					else
-						isShopLoc = true;
+					boolean isShopLoc = true;
 					if(!isShopLoc || event.getAction() == Action.RIGHT_CLICK_BLOCK || event.getPlayer().isSneaking())
 						return;
 					event.setCancelled(true);

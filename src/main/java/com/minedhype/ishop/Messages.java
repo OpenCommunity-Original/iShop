@@ -88,6 +88,7 @@ public enum Messages {
 	WG_REGION("outsideRegion");
 
 	private final String msg;
+	private final String prefix = "  &2&lGoodTrade &f";
 
 	Messages(String msg) {
 		this.msg = msg;
@@ -95,7 +96,7 @@ public enum Messages {
 
 	@Override
 	public String toString() {
-		String translate = iShop.config.getString(msg);
+		String translate = prefix + iShop.config.getString(msg);
 		if(translate == null)
 			translate = "&cError retrieving config message!";
 		return ChatColor.translateAlternateColorCodes('&', translate);
